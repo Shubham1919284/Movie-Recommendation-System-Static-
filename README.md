@@ -53,8 +53,8 @@ A simple **content-based movie recommendation system** built using Python and Fl
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Shubham1919284/movie-recommendation-system.git
-   cd movie-recommendation-system
+ git clone https://github.com/Shubham1919284/Movie-Recommendation-System-Static-.git
+cd Movie-Recommendation-System-Static-
    
 Install dependencies:
 
