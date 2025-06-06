@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Recommender</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #000000, #b31217);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            transition: background 0.5s ease-in-out;
+            border: 5px solid #e50914;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            background-color: rgba(0, 0, 0, 0.85);
+            color: #ff3c38;
+            padding: 20px;
+            margin-bottom: 30px;
+            font-size: 2.8rem;
+            letter-spacing: 1.5px;
+            border: 2px solid #ff3c38;
+            border-radius: 10px;
+        }
+
+        form {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            width: 280px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+
+        input[type="text"]:focus {
+            transform: scale(1.05);
+        }
+
+        input[type="submit"] {
+            padding: 12px 24px;
+            font-size: 16px;
+            background: linear-gradient(to right, #e50914, #b81d24);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            transform: scale(1.05);
+            background: linear-gradient(to right, #b81d24, #e50914);
+        }
+
+        .movie-search-info {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #f1f1f1;
+        }
+
+        .recommendation-title {
+            margin-top: 30px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .loader {
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            border-top: 5px solid #e50914;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto 5px auto;
+            display: none;
+        }
+
+        #loading-text {
+            font-size: 16px;
+            color: #ffbaba;
+            display: none;
+            animation: fadein 0.3s ease-in-out forwards;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadein {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .recommendations {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+            padding: 0 20px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .recommendations.show {
+            opacity: 1;
+        }
+
+        .movie-card {
+            width: 200px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(255, 0, 0, 0.4);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.6);
+        }
+
+        .movie-card img {
+            width: 100%;
+            border-radius: 5px;
+            border: 2px solid #ff3c38;
+        }
+
+        .movie-card p {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #111;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 6px 10px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+    <script>
+        function showLoader() {
+            document.getElementById('loader').style.display = 'block';
+            document.getElementById('loading-text').style.display = 'block';
+            let seconds = 5;
+            const text = document.getElementById('loading-text');
+            text.innerText = `Fetching recommendations... (~${seconds}s)`;
+            const countdown = setInterval(() => {
+                seconds--;
+                if (seconds >= 1) {
+                    text.innerText = `Fetching recommendations... (~${seconds}s)`;
+                } else {
+                    clearInterval(countdown);
+                }
+            }, 1000);
+        }
+
+        window.onload = function() {
+            const results = document.querySelector('.recommendations');
+            if (results) {
+                results.classList.add('show');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Movie Recommendation System</h1>
+
+    <form method="POST" onsubmit="showLoader()">
+        <input type="text" name="movie" placeholder="Enter a movie name" required>
+        <input type="submit" value="Recommend">
+    </form>
+
+    <div id="loader" class="loader"></div>
+    <div id="loading-text"></div>
+
+    {% if movie_name %}
+        <div class="movie-search-info">
+            You searched for: <strong>{{ movie_name }}</strong>
+        </div>
+    {% endif %}
+
+    {% if recommendations %}
+        <div class="recommendation-title">
+            Recommended movies are:
+        </div>
+
+        <div class="recommendations show">
+            {% for title, poster in recommendations %}
+                <div class="movie-card">
+                    <img src="{{ poster }}" alt="{{ title }}">
+                    <p>{{ title }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</body>
+</html>
