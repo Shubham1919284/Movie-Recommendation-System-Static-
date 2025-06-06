@@ -53,8 +53,9 @@ A simple **content-based movie recommendation system** built using Python and Fl
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/movie-recommendation-system.git
+   git clone https://github.com/Shubham1919284/movie-recommendation-system.git
    cd movie-recommendation-system
+   
 Install dependencies:
 
 pip install -r requirements.txt
@@ -71,4 +72,12 @@ python app.py
 
 Open your browser and go to http://127.0.0.1:5000
 --> Now you are good to go and use it...........
+
+-----------
+
+## 👨‍💻 Author
+
+**Shubham Kumar Jha**  
+BTech CSE (Data Science) | Gulzar Group of Institutes (PTU)  
+📧 Email: sk1919284@gmail.com | 🔗 LinkedIn: linkedin.com/in/shubham-kumar-jha-1a2b3c
 
