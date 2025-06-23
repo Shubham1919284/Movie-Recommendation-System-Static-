@@ -8,7 +8,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 app = Flask(__name__)
 
-TMDB_API_KEY = "220ae607aba8a49a9fe7e3e9707ac0d1"
+TMDB_API_KEY = "Your API Key"
 
 # Load movies and similarity data
 movies = pd.read_csv('movies.csv')
