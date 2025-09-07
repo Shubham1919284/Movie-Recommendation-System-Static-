@@ -84,6 +84,15 @@ Go to: `http://127.0.0.1:5000`
 
 -----
 
+And yes, **also the `requirements.txt` file** for this project. Based on your description, the file would need to include the following dependencies:
+
+```
+flask
+pandas
+scikit-learn
+requests
+```
+----
 ### 👨‍💻 Author
 
 **Shubham Kumar Jha**
@@ -93,13 +102,3 @@ BTech CSE (Data Science) | Gulzar Group of Institutes (PTU)
   - 🔗 **LinkedIn:** `linkedin.com/in/shubham-kumar-jha-1a2b3c`
   - 🔗 **GitHub:** `github.com/Shubham1919284`
 
------
-
-And yes, **also the `requirements.txt` file** for this project. Based on your description, the file would need to include the following dependencies:
-
-```
-flask
-pandas
-scikit-learn
-requests
-```
