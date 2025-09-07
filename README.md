@@ -93,12 +93,11 @@ scikit-learn
 requests
 ```
 ----
-### 👨‍💻 Author
+## 🙌 Let’s Connect  
 
-**Shubham Kumar Jha**
-BTech CSE (Data Science) | Gulzar Group of Institutes (PTU)
+If you find this project interesting, feel free to ⭐ the repo and share your thoughts!  
 
-  - 📧 **Email:** `sk1919284@gmail.com`
-  - 🔗 **LinkedIn:** `linkedin.com/in/shubham-kumar-jha-1a2b3c`
-  - 🔗 **GitHub:** `github.com/Shubham1919284`
+- 🔗 [LinkedIn – Shubham Kumar Jha](https://www.linkedin.com/in/shubham-kumar-jha-1a2b3c)  
+- 💻 [GitHub – Shubham1919284](https://github.com/Shubham1919284)  
 
+---
